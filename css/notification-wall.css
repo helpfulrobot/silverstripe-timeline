@@ -1,2 +1,4 @@
 .notification-wall-wrap .cms-edit-form { display: block; }
 .notification-wall-wrap .cms-content-fields { display: block; width: auto; }
+
+.cms-notification-status { min-height: 20px; }

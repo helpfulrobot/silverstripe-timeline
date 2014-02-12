@@ -16,9 +16,11 @@ class NotificationsWall extends LeftAndMain {
 	
 	/**
 	 *
-	 * @var string
+	 * @var array
 	 */
-	private static $url_rule = '/$ReportClass/$Action';
+	private static $allowed_actions = array(
+		'count'
+	);
 	
 	/**
 	 *
@@ -40,7 +42,24 @@ class NotificationsWall extends LeftAndMain {
 
 	public function init() {
 		parent::init();
-		Requirements::css('notification/css/notification-wall.css');
+		if(!$this->request->isAjax()) {
+			Requirements::css('notification/css/notification-wall.css');
+		}
+	}
+	
+	/**
+	 * Returns the unread count in a JSONobject
+	 * 
+	 * @return SS_HTTPRequest
+	 */
+	public function count() {
+		$notifications = Notification::get_unread(Member::currentUser());
+		$response = new SS_HTTPResponse(
+			json_encode(array('count' => $notifications->count())), 
+			200
+		);
+		$response->addHeader('Content-Type', 'application/json');
+		return $response;
 	}
 	
 	/**
