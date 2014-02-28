@@ -1,0 +1,20 @@
+{
+    "name": "silverstripe/timeline",
+    "description": "Provides an timeline view of events in the CMS",
+	"type": "silverstripe-module",
+	"homepage": "https://github.com/stojg/silverstripe-timeline",
+    "authors": [
+        {
+            "name": "Stig Lindqvist",
+            "email": "stojg.lindqvist@gmail.com"
+        }
+    ],
+    "require": {
+		"composer/installers": "*",
+		"silverstripe/framework": "~3.1",
+		"silverstripe/cms": "~3.1"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "*"
+	}
+}
