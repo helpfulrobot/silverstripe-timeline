@@ -1,9 +1,9 @@
 <?php
 /**
- * Overriden from GridFieldDataColumns so that it doesn't escape HTML content
+ * Overriden from GridFieldDataColumns so that it doesn't escape HTML content 
+ * and marks the Notification as read when it's displayed.
  * 
- * @package framework
- * @subpackage fields-gridfield
+ * @package notifications
  */
 class NotificationColumns extends GridFieldDataColumns {
 
@@ -31,12 +31,14 @@ class NotificationColumns extends GridFieldDataColumns {
 		} else {
 			$value = $gridField->getDataFieldValue($record, $columnName);
 		}
-
+		
 		// Make any formatting tweaks
 		$value = $this->formatValue($gridField, $record, $columnName, $value);
 		// Do any final escaping
 		$value = $this->escapeValue($gridField, $value);
-
+		
+		// Mark record as read
+		$record->markAsRead();
 		return $value;
 	}
 }

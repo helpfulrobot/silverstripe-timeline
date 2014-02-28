@@ -19,14 +19,15 @@ class NotificationsWall extends LeftAndMain {
 	 * @var array
 	 */
 	private static $allowed_actions = array(
-		'count'
+		'count',
+		'index'
 	);
 	
 	/**
 	 *
 	 * @var string
 	 */
-	private static $menu_title = 'Notifications';
+	private static $menu_title = 'Wall';
 
 	/**
 	 *
@@ -45,6 +46,16 @@ class NotificationsWall extends LeftAndMain {
 		if(!$this->request->isAjax()) {
 			Requirements::css('notification/css/notification-wall.css');
 		}
+	}
+	
+	/**
+	 * Everyone should be able to see their notifications
+	 * 
+	 * @param Member $member
+	 * @return boolean
+	 */
+	public function canView($member = null) {
+		return true;
 	}
 	
 	/**
@@ -72,26 +83,24 @@ class NotificationsWall extends LeftAndMain {
 		
 		$fields = new FieldList();
 		
+		$notifications = Notification::get_all(Member::currentUser());
+		
 		$gridField = new GridField(
 			'Notifications',
 			'Notifications',
-			Notification::get_all(Member::currentUser()),
+			$notifications,
 			new NotificationGridFieldConfig()
 		);
+		
 		$fields->add($gridField);
 		
-		$form = CMSForm::create( 
-				$this, "EditForm", $fields, new FieldList()
-			)->setHTMLID('Form_EditForm');
+		$form = CMSForm::create($this, "EditForm", $fields, new FieldList())->setHTMLID('Form_EditForm');
 		
 		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('cms-edit-form');
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 		
-		
 		return $form;
 	}
-	
-	
 }

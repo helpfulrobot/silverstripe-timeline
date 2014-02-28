@@ -42,6 +42,20 @@ class Notification extends DataObject {
 	/**
 	 * 
 	 * @param Member $member
+	 * @return bool
+	 */
+	public function canView($member = null) {
+		if(!$member) {
+			$member = Member::currentUser();
+		}
+		if(!$member) {
+			return false;
+		}
+		return ($this->MemberID == $member->ID);
+	}
+	/**
+	 * 
+	 * @param Member $member
 	 * @param type $message
 	 * @return int - the new Notification primary id
 	 */

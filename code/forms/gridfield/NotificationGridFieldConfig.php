@@ -1,11 +1,10 @@
 <?php
 
 /**
- * Description of NotificationGridFieldConfig
+ * NotificationGridFieldConfig
  *
  */
 class NotificationGridFieldConfig extends GridFieldConfig {
-	
 	
 	/**
 	 * @param int $itemsPerPage - How many items per page should show up
