@@ -3,7 +3,7 @@
  * Overriden from GridFieldDataColumns so that it doesn't escape HTML content 
  * and marks the Notification as read when it's displayed.
  * 
- * @package notifications
+ * @package timeline
  */
 class NotificationColumns extends GridFieldDataColumns {
 

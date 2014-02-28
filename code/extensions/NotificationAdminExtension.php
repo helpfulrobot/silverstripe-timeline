@@ -11,8 +11,8 @@ class NotificationAdminExtension extends LeftAndMainExtension {
 	 */
 	public function init() {
 		parent::init();
-		Requirements::css('notification/css/notification.css');
-		Requirements::javascript('notification/javascript/notification.js');
+		Requirements::css('timeline/css/notification.css');
+		Requirements::javascript('timeline/javascript/notification.js');
 		
 	}
 }

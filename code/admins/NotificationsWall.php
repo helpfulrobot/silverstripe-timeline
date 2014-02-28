@@ -33,7 +33,7 @@ class NotificationsWall extends LeftAndMain {
 	 *
 	 * @var string
 	 */
-	private static $menu_icon = "notification/images/notifications.png";
+	private static $menu_icon = "timeline/images/notifications.png";
 
 	/**
 	 *
@@ -44,7 +44,7 @@ class NotificationsWall extends LeftAndMain {
 	public function init() {
 		parent::init();
 		if(!$this->request->isAjax()) {
-			Requirements::css('notification/css/notification-wall.css');
+			Requirements::css('timeline/css/notification-wall.css');
 		}
 	}
 	
