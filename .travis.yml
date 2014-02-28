@@ -21,4 +21,4 @@ before_script:
 script: 
  - phpunit --coverage-clover=coverage.clover timeline/tests
  - wget https://scrutinizer-ci.com/ocular.phar
- - php ocular.phar code-coverage:upload --access-token="your-token" --format=php-clover coverage.clover
+ - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
