@@ -47,7 +47,7 @@ class NotificationStarAction implements GridField_ColumnProvider, GridField_Acti
 	 * Which columns are handled by this component
 	 * 
 	 * @param type $gridField
-	 * @return type 
+	 * @return string[] 
 	 */
 	public function getColumnsHandled($gridField) {
 		return array('Actions');
@@ -57,7 +57,7 @@ class NotificationStarAction implements GridField_ColumnProvider, GridField_Acti
 	 * Which GridField actions are this component handling
 	 *
 	 * @param GridField $gridField
-	 * @return array 
+	 * @return string[] 
 	 */
 	public function getActions($gridField) {
 		return array('star', 'unstar');

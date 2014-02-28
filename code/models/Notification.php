@@ -56,7 +56,7 @@ class Notification extends DataObject {
 	/**
 	 * 
 	 * @param Member $member
-	 * @param type $message
+	 * @param string $message
 	 * @return int - the new Notification primary id
 	 */
 	public static function notify(Member $member, $message) {
@@ -77,7 +77,7 @@ class Notification extends DataObject {
 	 * Short hand for getting all notifications for a member
 	 * 
 	 * @param Member $member
-	 * @return type
+	 * @return DataList
 	 */
 	public static function get_unread(Member $member) {
 		return Notification::get()->filter(array(
@@ -90,7 +90,7 @@ class Notification extends DataObject {
 	 * Short hand for getting all notifications for a member
 	 * 
 	 * @param Member $member
-	 * @return type
+	 * @return DataList
 	 */
 	public static function get_starred(Member $member) {
 		return Notification::get()->filter(array(
