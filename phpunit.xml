@@ -14,9 +14,4 @@ e" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCh
 		    <directory suffix=".php">code</directory>
 		</whitelist>
 	</filter>
-	<groups>
-		<exclude>
-			<group>sanitychecks</group>
-		</exclude>
-	</groups>
 </phpunit>

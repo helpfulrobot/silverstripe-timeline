@@ -20,5 +20,6 @@ before_script:
 
 script: 
  - phpunit -c timeline/phpunit.xml --coverage-clover=coverage.clover timeline/tests
+ - cat coverage.clover
  - wget https://scrutinizer-ci.com/ocular.phar
  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover --repository=g/stojg/silverstripe-timeline --revision=`cd timeline && git rev-parse HEAD`
