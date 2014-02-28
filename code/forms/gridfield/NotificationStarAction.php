@@ -66,7 +66,7 @@ class NotificationStarAction implements GridField_ColumnProvider, GridField_Acti
 	/**
 	 *
 	 * @param GridField $gridField
-	 * @param DataObject $record
+	 * @param Notification $record
 	 * @param string $columnName
 	 * @return string - the HTML for the column 
 	 */

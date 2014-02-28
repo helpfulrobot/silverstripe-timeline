@@ -13,7 +13,7 @@ class NotificationColumns extends GridFieldDataColumns {
 	 * Overriden from GridFieldDataColumns so that it doesn't escape HTML content
 	 * 
 	 * @param  GridField
-	 * @param  DataObject - Record displayed in this row
+	 * @param  Notification - Record displayed in this row
 	 * @param  string 
 	 * @return string HTML for the column. Return NULL to skip.
 	 */

@@ -3,6 +3,11 @@
 /**
  * Description of Notification
  *
+ * @property int $ID 
+ * @property HTMLText $Message 
+ * @property Boolean $read
+ * @property Starred $read
+ * @property int $MemberID 
  */
 class Notification extends DataObject {
 	
