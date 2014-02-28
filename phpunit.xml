@@ -1,0 +1,22 @@
+<phpunit bootstrap="../framework/tests/bootstrap.php" colors="true" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="fals
+e" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCheck="false" verbose="true" strict="false">
+
+	<testsuite name="Default">
+		<directory>tests</directory>	
+	</testsuite>
+
+	<listeners>
+		<listener class="SS_TestListener" file="../framework/dev/TestListener.php" />
+	</listeners>
+
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+		    <directory suffix=".php">code</directory>
+		</whitelist>
+	</filter>
+	<groups>
+		<exclude>
+			<group>sanitychecks</group>
+		</exclude>
+	</groups>
+</phpunit>
