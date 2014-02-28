@@ -61,7 +61,7 @@ class NotificationsWall extends LeftAndMain {
 	/**
 	 * Returns the unread count in a JSONobject
 	 * 
-	 * @return SS_HTTPRequest
+	 * @return SS_HTTPResponse
 	 */
 	public function count() {
 		$notifications = Notification::get_unread(Member::currentUser());
