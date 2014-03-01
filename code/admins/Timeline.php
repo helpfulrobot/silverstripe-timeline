@@ -39,7 +39,7 @@ class Timeline extends LeftAndMain {
 	 *
 	 * @var string
 	 */
-	private static $tree_class = 'Notification';
+	private static $tree_class = 'TimelineEvent';
 
 	public function init() {
 		parent::init();
@@ -64,7 +64,7 @@ class Timeline extends LeftAndMain {
 	 * @return SS_HTTPResponse
 	 */
 	public function count() {
-		$notifications = Notification::get_unread(Member::currentUser());
+		$notifications = TimelineEvent::get_unread(Member::currentUser());
 		$response = new SS_HTTPResponse(
 			json_encode(array('count' => $notifications->count())), 
 			200
@@ -83,13 +83,13 @@ class Timeline extends LeftAndMain {
 		
 		$fields = new FieldList();
 		
-		$notifications = Notification::get_all(Member::currentUser());
+		$notifications = TimelineEvent::get_all(Member::currentUser());
 		
 		$gridField = new GridField(
-			'Notifications',
-			'Notifications',
+			'TimelineEvents',
+			'Timeline',
 			$notifications,
-			new NotificationGridFieldConfig()
+			new TimelineConfig()
 		);
 		
 		$fields->add($gridField);

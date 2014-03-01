@@ -1,11 +1,11 @@
 <?php
 /**
  * Overriden from GridFieldDataColumns so that it doesn't escape HTML content 
- * and marks the Notification as read when it's displayed.
+ * and marks the TimelineEvents as read when it's displayed.
  * 
  * @package timeline
  */
-class NotificationColumns extends GridFieldDataColumns {
+class TimelineColumns extends GridFieldDataColumns {
 
 	/**
 	 * HTML for the column, content of the <td> element.
@@ -13,7 +13,7 @@ class NotificationColumns extends GridFieldDataColumns {
 	 * Overriden from GridFieldDataColumns so that it doesn't escape HTML content
 	 * 
 	 * @param  GridField
-	 * @param  Notification - Record displayed in this row
+	 * @param  TimelineEvent - Record displayed in this row
 	 * @param  string 
 	 * @return string HTML for the column. Return NULL to skip.
 	 */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * NotificationAdminExtension
+ * TimelineLeftAndMainExtension
  *
  */
 class TimelineLeftAndMainExtension extends LeftAndMainExtension {

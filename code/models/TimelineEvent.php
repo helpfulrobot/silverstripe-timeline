@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Notification
+ * TimelineEvent
  *
  * @property int $ID 
  * @property HTMLText $Message 
@@ -9,7 +9,7 @@
  * @property Starred $Starred
  * @property int $MemberID 
  */
-class Notification extends DataObject {
+class TimelineEvent extends DataObject {
 	
 	/**
 	 *
@@ -62,7 +62,7 @@ class Notification extends DataObject {
 	 * 
 	 * @param Member $member
 	 * @param string $message
-	 * @return int - the new Notification primary id
+	 * @return int - the new TimelineEvent primary id
 	 */
 	public static function notify(Member $member, $message) {
 		if(!$member->ID) {
@@ -71,7 +71,7 @@ class Notification extends DataObject {
 		if(!Member::get()->byID($member->ID)) {
 			return false;
 		}
-		$notification = new Notification();
+		$notification = new TimelineEvent();
 		$notification->MemberID = $member->ID;
 		$notification->Message = $message;
 		$id = $notification->write();
@@ -85,7 +85,7 @@ class Notification extends DataObject {
 	 * @return DataList
 	 */
 	public static function get_unread(Member $member) {
-		return Notification::get()->filter(array(
+		return TimelineEvent::get()->filter(array(
 			'MemberID' => $member->ID,
 			'Read' => 0
 		));
@@ -98,7 +98,7 @@ class Notification extends DataObject {
 	 * @return DataList
 	 */
 	public static function get_starred(Member $member) {
-		return Notification::get()->filter(array(
+		return TimelineEvent::get()->filter(array(
 			'MemberID' => $member->ID,
 			'Starred' => 1
 		));
@@ -109,7 +109,7 @@ class Notification extends DataObject {
 	 * @param Member $member
 	 */
 	public static function get_all(Member $member) {
-		return Notification::get()->filter(array(
+		return TimelineEvent::get()->filter(array(
 			'MemberID' => $member->ID
 		));
 	}
