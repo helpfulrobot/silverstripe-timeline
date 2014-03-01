@@ -5,8 +5,8 @@
  *
  * @property int $ID 
  * @property HTMLText $Message 
- * @property Boolean $read
- * @property Starred $read
+ * @property Boolean $Read
+ * @property Starred $Starred
  * @property int $MemberID 
  */
 class Notification extends DataObject {
