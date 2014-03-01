@@ -4,3 +4,7 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/stojg/silverstripe-timeline/badges/coverage.png?s=1f4957385c220426d1105bde015f0ff9b1a1c8a2)](https://scrutinizer-ci.com/g/stojg/silverstripe-timeline/)
 
 This module provides SilverStripe with some cool things... [more to come] 
+
+## Installation
+
+    composer require silverstripe/timeline "dev-master"
