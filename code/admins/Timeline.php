@@ -6,13 +6,13 @@
  * This is an admin controller that allows a user to see their notifications
  *
  */
-class NotificationsWall extends LeftAndMain {
+class Timeline extends LeftAndMain {
 	
 	/**
 	 *
 	 * @var string
 	 */
-	private static $url_segment = 'notifications';
+	private static $url_segment = 'timeline';
 	
 	/**
 	 *
@@ -27,7 +27,7 @@ class NotificationsWall extends LeftAndMain {
 	 *
 	 * @var string
 	 */
-	private static $menu_title = 'Wall';
+	private static $menu_title = 'Timeline';
 
 	/**
 	 *

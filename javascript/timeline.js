@@ -5,21 +5,28 @@ jQuery(function($) {
 	
 	$.entwine('ss', function($) {
 		
-		$('.cms-logo-header').entwine({
+		$('#Menu-Timeline span.text').entwine({
 			/** 
 			 * Add a notification box underneath the 
 			 */
 			onmatch: function() {
-				var notificationBox = '<div class="cms-notification-status"><a href="/admin/notifications"><span class="count">0</span> notifications</a></div>';
-				this.after(notificationBox);
+				var notificationBox = ' <span class="cms-notification-status"><span class="count"></span></span>';
+				this.append(notificationBox);
 			},
 		});
 		
 		
-		$('.cms-notification-status a').entwine({
+		$('.cms-notification-status').entwine({
 			
 			setCount: function(data) {
-				this.children('.count').html(data.count);
+				if(typeof data.count === "undefined")  {
+					return;
+				}
+				
+				if(data.count > 0) {
+					this.children('.count').html('(' + data.count + ')');
+				}
+				
 			},
 			
 			/**
@@ -36,7 +43,7 @@ jQuery(function($) {
 				var self = this;
 				// first get the latest count
 				jQuery.ajax({
-					url: 'admin/notifications/count',
+					url: 'admin/timeline/count',
 					global: false,
 					type: 'POST',
 					dataType: "json",
@@ -58,7 +65,7 @@ jQuery(function($) {
 				// setup pinging for notification count
 				setInterval(function(){
 					jQuery.ajax({
-						url: 'admin/notifications/count',
+						url: 'admin/timeline/count',
 						global: false,
 						type: 'POST',
 						dataType: "json",
