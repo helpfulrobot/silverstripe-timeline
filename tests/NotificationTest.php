@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Description of NotificationTest
+ * TimelineEventTest
  *
  */
-class NotificationTest extends SapphireTest {
+class TimelineEventTest extends SapphireTest {
 	
 	/**
 	 *
 	 * @var string
 	 */
-	public static $fixture_file = 'NotificationTest.yml';
+	public static $fixture_file = 'TimelineEventTest.yml';
 	
 	/**
 	 * 
 	 */
 	public function testClassExists() {
-		$this->assertTrue(new Notification instanceof Notification);
+		$this->assertTrue(new TimelineEvent instanceof TimelineEvent);
 	}
 	
 	/**
@@ -24,7 +24,7 @@ class NotificationTest extends SapphireTest {
 	 */
 	public function testNotifyNonExistingMemberReturnsFalse() {
 		$member = new Member();
-		$this->assertFalse(Notification::notify($member, 'this is a message'));
+		$this->assertFalse(TimelineEvent::notify($member, 'this is a message'));
 	}
 	
 	/**
@@ -33,58 +33,58 @@ class NotificationTest extends SapphireTest {
 	public function testNotifyNotSavedMemberReturnsFalse() {
 		$member = new Member();
 		$member->Email = 'testuser@test.com';
-		$this->assertFalse(Notification::notify($member, 'this is a message'));
+		$this->assertFalse(TimelineEvent::notify($member, 'this is a message'));
 	}
 	
 	/**
 	 * 
 	 */
-	public function testGetUnreadNotificationCountForMemberIsZero() {
+	public function testGetUnreadTimelineEventCountForMemberIsZero() {
 		$member = $this->objFromFixture('Member', 'reciever');
-		$unread = Notification::get_unread($member);
+		$unread = TimelineEvent::get_unread($member);
 		$this->assertEquals(0, $unread->count());
 	}
 	
 	/**
 	 * 
 	 */
-	public function testGetUnreadNotificationCountForMemberIsOne() {
+	public function testGetUnreadTimelineEventCountForMemberIsOne() {
 		$member = $this->objFromFixture('Member', 'reciever');
-		$notificationID = Notification::notify($member, 'this is a message');
+		$notificationID = TimelineEvent::notify($member, 'this is a message');
 		$this->assertNotEquals(false, $notificationID, 'Ensure that the notification got saved');
 		
-		$unread = Notification::get_unread($member);
+		$unread = TimelineEvent::get_unread($member);
 		$this->assertEquals(1, $unread->count());
 		$this->assertEquals('this is a message', $unread->first()->Message);
 	}
 	
 	
-	public function testMarkNotificationAsRead() {
+	public function testMarkTimelineEventAsRead() {
 		$member = $this->objFromFixture('Member', 'reciever');
 		
-		Notification::notify($member, 'Im message to u!');
-		$unread = Notification::get_unread($member);
+		TimelineEvent::notify($member, 'Im message to u!');
+		$unread = TimelineEvent::get_unread($member);
 		
 		$this->assertEquals(1, $unread->count());
 		$unread->first()->markAsRead();
-		$this->assertEquals(0, Notification::get_unread($member)->count());
+		$this->assertEquals(0, TimelineEvent::get_unread($member)->count());
 	}
 	
 	/**
 	 * 
 	 */
-	public function testMarkNotificationAsStarred() {
+	public function testMarkTimelineEventAsStarred() {
 		$member = $this->objFromFixture('Member', 'reciever');
-		Notification::notify($member, 'Im important message to u!');
+		TimelineEvent::notify($member, 'Im important message to u!');
 		
-		$this->assertEquals(0, Notification::get_starred($member)->count());
+		$this->assertEquals(0, TimelineEvent::get_starred($member)->count());
 		
-		$notifications = Notification::get_all($member);
+		$notifications = TimelineEvent::get_all($member);
 		$this->assertEquals(1, $notifications->count());
 		$notifications->first()->markAsStarred();
 		
-		$this->assertEquals(1, Notification::get_starred($member)->count());
+		$this->assertEquals(1, TimelineEvent::get_starred($member)->count());
 		$notifications->first()->markAsNotStarred();
-		$this->assertEquals(0, Notification::get_starred($member)->count());
+		$this->assertEquals(0, TimelineEvent::get_starred($member)->count());
 	}
 }
