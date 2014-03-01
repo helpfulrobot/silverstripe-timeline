@@ -7,6 +7,9 @@ filter:
         - 'library/*'
     paths: {  }
 tools:
+    js_hint: true
+        filter:
+            paths:                [javascript/*]
     php_analyzer:
         enabled: true
         extensions:
