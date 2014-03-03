@@ -5,7 +5,7 @@ filter:
         - 'app/*'
         - 'bin/*'
         - 'library/*'
-    paths: {  }
+    paths: [ 'timeline/*']
 tools:
     js_hint: true
     php_analyzer:
@@ -61,6 +61,11 @@ tools:
                 - 'bin/*'
                 - 'library/*'
             paths: {  }
+    sensiolabs_security_checker: true
+    php_loc:
+        enabled: true
+        excluded_dirs: [vendor, tests]
+
 changetracking:
     bug_patterns:
         - '\bfix(?:es|ed)?\b'
